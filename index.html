@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sheet Metal Designer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .fold-line {
+      cursor: move;
+    }
+    .bend-up {
+      stroke-dasharray: 5, 5;
+    }
+    .bend-down {
+      stroke-dasharray: 2, 2;
+    }
+    .error-msg {
+      color: red;
+      font-size: 1.2rem;
+      display: none;
+    }
+  </style>
+</head>
+<body class="p-6 overflow-x-hidden">
+
+  <h1 class="text-4xl font-bold text-center mb-6 text-white">🔩 Sheet Metal Design Tool</h1>
+
+  <!-- Error Message -->
+  <div id="error-msg" class="error-msg text-center mb-4">
+    ⚠️ Please enter valid width and height values to create your sheet.
+  </div>
+
+  <!-- Controls -->
+  <div class="bg-white/10 p-4 rounded-xl shadow-lg mb-4 max-w-5xl mx-auto space-y-6">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="relative">
+        <input type="number" id="sheetWidth" placeholder="Width (mm)" 
+          class="w-full p-3 pl-10 rounded-xl text-black bg-white shadow-inner focus:outline-none focus:ring-2 focus:ring-cyan-400">
+        <span class="absolute left-3 top-3.5 text-gray-500">📏</span>
+      </div>
+      <div class="relative">
+        <input type="number" id="sheetHeight" placeholder="Height (mm)" 
+          class="w-full p-3 pl-10 rounded-xl text-black bg-white shadow-inner focus:outline-none focus:ring-2 focus:ring-cyan-400">
+        <span class="absolute left-3 top-3.5 text-gray-500">📐</span>
+      </div>
+      <button onclick="setSheet()"
+        class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-semibold p-3 rounded-xl transition duration-300 shadow-lg">
+        ✅ Set Sheet
+      </button>
+      <button onclick="clearCanvas()"
+        class="bg-gradient-to-r from-rose-500 to-red-600 hover:from-red-600 hover:to-rose-700 text-white font-semibold p-3 rounded-xl transition duration-300 shadow-lg">
+        ❌ Clear Design
+      </button>
+    </div>
+
+    <div class="flex flex-wrap items-center gap-4">
+      <input type="number" id="foldPos" placeholder="Fold position (mm)"
+        class="p-3 rounded-xl text-black bg-white shadow-inner focus:outline-none focus:ring-2 focus:ring-amber-400 w-40">
+      <select id="bendDirection"
+        class="p-3 rounded-xl text-black bg-white shadow-inner focus:outline-none focus:ring-2 focus:ring-amber-400 w-40">
+        <option value="up">⬆️ Bend Up</option>
+        <option value="down">⬇️ Bend Down</option>
+      </select>
+      <button onclick="addFoldLine()"
+        class="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white p-3 rounded-xl shadow-md transition duration-300">
+        ➕ Add Fold Line
+      </button>
+      <button onclick="removeLastFoldLine()"
+        class="bg-yellow-500 hover:bg-yellow-600 text-white p-3 rounded-xl transition duration-300 shadow-md">
+        ↩️ Undo Fold
+      </button>
+      <button onclick="downloadSVG()"
+        class="bg-purple-500 hover:bg-purple-600 text-white p-3 rounded-xl transition duration-300 shadow-md">
+        🖼️ Download SVG
+      </button>
+      <button onclick="downloadPNG()"
+        class="bg-indigo-500 hover:bg-indigo-600 text-white p-3 rounded-xl transition duration-300 shadow-md">
+        📷 Download PNG
+      </button>
+      <button onclick="downloadDXF()"
+        class="bg-pink-500 hover:bg-pink-600 text-white p-3 rounded-xl transition duration-300 shadow-md">
+        📁 Export DXF
+      </button>
+    </div>
+  </div>
+
+  <!-- Canvas Container -->
+  <div class="overflow-auto border rounded-xl max-w-5xl mx-auto bg-white/5">
+    <svg id="designCanvas" class="w-full h-[600px]" viewBox="0 0 1000 1000" style="touch-action: none;"></svg>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
