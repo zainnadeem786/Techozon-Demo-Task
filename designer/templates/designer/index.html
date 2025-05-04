@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -95,6 +96,6 @@
     <svg id="designCanvas" class="w-full h-[600px]" viewBox="0 0 1000 1000" style="touch-action: none;"></svg>
   </div>
 
-  <script src="script.js"></script>
+<script src="{% static 'designer/js/script.js' %}"></script>
 </body>
 </html>

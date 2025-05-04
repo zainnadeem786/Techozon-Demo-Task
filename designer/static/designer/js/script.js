@@ -140,6 +140,7 @@ const canvas = document.getElementById("designCanvas");
       a.download = "sheet-metal-design.svg";
       a.click();
       URL.revokeObjectURL(url);
+      logDownload("SVG");
     }
 
     function downloadPNG() {
@@ -159,6 +160,7 @@ const canvas = document.getElementById("designCanvas");
         a.download = 'sheet-metal-design.png';
         a.click();
       };
+      logDownload("PNG");
     }
 
     function downloadDXF() {
@@ -187,4 +189,8 @@ const canvas = document.getElementById("designCanvas");
       a.download = "sheet-metal-design.dxf";
       a.click();
       URL.revokeObjectURL(url);
+      logDownload("DXF");
     }
+
+
+    
