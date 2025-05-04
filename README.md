@@ -57,7 +57,7 @@ sheet-metal-design/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/sheet-metal-design.git
+git clone https://github.com/zainnadeem786/Techozon-Demo-Task
 cd sheet-metal-design
 ```
 
