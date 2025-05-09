@@ -1,7 +1,7 @@
 
 # 🧰 Sheet Metal Design Preview Tool
 
-An interactive web-based tool for visualizing sheet metal designs. Users can define sheet dimensions, add custom fold lines with directions (**Up** or **Down**), preview the layout, and download the design in **SVG**, **PNG**, or **DXF** format. Each download is logged in the Django admin panel for tracking.
+An interactive web-based tool for visualizing sheet metal designs. Users can define sheet dimensions, add custom fold lines with directions (**Up** or **Down**), preview the layout, and download the design in **SVG**, **PNG**, or **DXF** format. 
 
 ---
 
@@ -113,7 +113,7 @@ Admin: **http://127.0.0.1:8000/admin/**
 4. Click **"Add Fold"**
 5. Use mouse to **zoom, pan, or drag fold lines**
 6. Download design as PNG/SVG/DXF
-7. Check admin panel to view all download logs
+
 
 ---
 
@@ -133,8 +133,4 @@ Developed by **Zain Nadeem**
 Python Django Developer | Software Engineer | Frontend + Backend Integration Specialist  
 [LinkedIn](http://www.linkedin.com/in/zain-nadeem786) | [GitHub](https://github.com/zainnadeem786) | 
 
----
 
-## 📃 License
-
-This project is open source and available under the [MIT License](LICENSE).
