@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sheet Metal Designer</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- three.js for 3D folding -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.153.0/build/three.min.js"></script>
   <style>
     body {
       background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
@@ -25,6 +27,37 @@
       color: red;
       font-size: 1.2rem;
       display: none;
+    }
+    .fold-endpoint {
+      cursor: pointer;
+      stroke: #222;
+      stroke-width: 2;
+      fill: #fff;
+      opacity: 0.95;
+    }
+    #preview3d {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      background: #111;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      width: 300px;
+      height: 200px;
+      box-shadow: 0 8px 32px #000a;
+      z-index: 20;
+      perspective: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #sheet3d {
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   </style>
 </head>
@@ -95,6 +128,12 @@
   <div class="overflow-auto border rounded-xl max-w-5xl mx-auto bg-white/5">
     <svg id="designCanvas" class="w-full h-[600px]" viewBox="0 0 1000 1000" style="touch-action: none;"></svg>
   </div>
+
+  <!-- 3D Preview -->
+  <div id="preview3d">
+    <div id="sheet3d"></div>
+  </div>
+
 
 <script src="{% static 'designer/js/script.js' %}"></script>
 </body>
